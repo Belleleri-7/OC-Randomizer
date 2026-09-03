@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate OC Randomizer V3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <p class="eyebrow">ULTIMATE OC RANDOMIZER / V3</p>
+    <h1>Roll. Lock. Evolve. Draw.</h1>
+    <p class="subtitle">Character • Outfit • Pets • Eras</p>
+  </div>
+  <div class="top-actions">
+    <label class="switch-row"><span>Ignore odds</span><input id="ignoreOdds" type="checkbox"></label>
+    <button id="newCharacter" class="btn primary">＋ Roll new character</button>
+  </div>
+</header>
+
+<main class="app">
+  <aside class="sidebar">
+    <nav>
+      <button class="nav-btn active" data-tab="character">Character</button>
+      <button class="nav-btn" data-tab="outfit">Outfit</button>
+      <button class="nav-btn" data-tab="pets">Pets</button>
+      <button class="nav-btn" data-tab="eras">Eras</button>
+      <button class="nav-btn" data-tab="history">History</button>
+    </nav>
+
+    <section class="sidebar-card">
+      <h3>Species preset</h3>
+      <select id="speciesPreset">
+        <option value="all">All species</option>
+        <option value="humanlike">Humanlike</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="supernatural">Supernatural</option>
+        <option value="artificial">Artificial</option>
+        <option value="monster">Monster</option>
+      </select>
+      <p class="small">Presets affect species only and do not reroll on change.</p>
+    </section>
+
+    <section class="sidebar-card">
+      <h3>Current OC</h3>
+      <label>Name<input id="characterName" type="text" placeholder="Unnamed OC"></label>
+      <p id="characterIdLabel" class="small"></p>
+    </section>
+  </aside>
+
+  <section class="workspace">
+    <section id="tab-character" class="tab active">
+      <div class="section-head">
+        <div><p class="eyebrow">01 / CHARACTER</p><h2>Character</h2></div>
+        <button id="rollCharacter" class="btn primary">🎲 Reroll current character</button>
+      </div>
+      <div id="characterSections"></div>
+    </section>
+
+    <section id="tab-outfit" class="tab">
+      <div class="section-head">
+        <div><p class="eyebrow">02 / OUTFIT</p><h2>Outfit</h2></div>
+        <button id="rollOutfit" class="btn primary">🎲 Roll outfit</button>
+      </div>
+      <div id="outfitSections"></div>
+    </section>
+
+    <section id="tab-pets" class="tab">
+      <div class="section-head">
+        <div><p class="eyebrow">03 / PETS</p><h2>Pets</h2></div>
+        <div class="row"><button id="addPet" class="btn">＋ Add pet</button><button id="rollPets" class="btn primary">🎲 Reroll all unlocked pet fields</button></div>
+      </div>
+      <div class="card pet-controls">
+        <label>Number of pets<input id="petCount" type="number" min="0" value="0"></label>
+        <p class="small">0 is allowed. Species, age, jobs and every personality part can be rerolled separately.</p>
+      </div>
+      <div id="petList" class="pet-list"></div>
+    </section>
+
+    <section id="tab-eras" class="tab">
+      <div class="section-head">
+        <div><p class="eyebrow">04 / TIMELINE</p><h2>Eras</h2></div>
+        <button id="createEra" class="btn primary">＋ Create new era</button>
+      </div>
+      <div class="card"><h3>Era transition rules</h3><div id="eraRules" class="checkbox-grid"></div></div>
+      <div id="eraList" class="archive-grid"></div>
+    </section>
+
+    <section id="tab-history" class="tab">
+      <div class="section-head"><div><p class="eyebrow">05 / HISTORY</p><h2>History</h2></div><button id="clearHistory" class="btn danger">Clear</button></div>
+      <div id="historyList" class="archive-grid"></div>
+    </section>
+  </section>
+</main>
+
+<dialog id="viewDialog">
+  <div class="dialog-head"><h2 id="dialogTitle"></h2><button id="closeDialog" class="icon-btn">×</button></div>
+  <div id="dialogBody"></div>
+</dialog>
+<script src="script.js"></script>
+</body>
+</html>
